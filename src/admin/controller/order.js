@@ -39,8 +39,6 @@ module.exports = class extends Base {
     const id = this.post('id');
 
     const model = this.model('order');
-    values.is_show = values.is_show ? 1 : 0;
-    values.is_new = values.is_new ? 1 : 0;
     if (id > 0) {
       await model.where({id: id}).update(values);
     } else {
