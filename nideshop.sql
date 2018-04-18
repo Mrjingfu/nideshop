@@ -638,8 +638,8 @@ DROP TABLE IF EXISTS `nideshop_goods_issue`;
 CREATE TABLE `nideshop_goods_issue` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `goods_id` text,
-  `question` varchar(255) DEFAULT NULL,
-  `answer` varchar(45) DEFAULT NULL,
+  `question` varchar(1000) DEFAULT NULL,
+  `answer` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
