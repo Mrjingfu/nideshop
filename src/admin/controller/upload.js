@@ -2,6 +2,24 @@ const Base = require('./base.js');
 const fs = require('fs');
 
 module.exports = class extends Base {
+  async adPicAction(){
+    const adFile = this.file('ad_pic');
+    if (think.isEmpty(adFile)) {
+      return this.fail('保存失败');
+    }
+    const that = this;
+    const filename = '/static/upload/ad/' + think.uuid(32) + '.jpg';
+    const is = fs.createReadStream(adFile.path);
+    const os = fs.createWriteStream(think.ROOT_PATH + '/www' + filename);
+    is.pipe(os);
+
+    return that.success({
+      name: 'ad_pic',
+      fileUrl: 'http://127.0.0.1:8360' + filename
+    });
+
+  }
+
   async brandPicAction() {
     const brandFile = this.file('brand_pic');
     if (think.isEmpty(brandFile)) {
