@@ -699,7 +699,7 @@ CREATE TABLE `nideshop_keywords` (
   `scheme _url` varchar(255) NOT NULL DEFAULT '' COMMENT '关键词的跳转链接',
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`keyword`,`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='热闹关键词表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
