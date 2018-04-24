@@ -464,7 +464,7 @@ CREATE TABLE `nideshop_feedback` (
   `parent_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `user_name` varchar(60) NOT NULL DEFAULT '',
-  `user_email` varchar(60) NOT NULL DEFAULT '',
+  `user_phone` varchar(60) NOT NULL DEFAULT '',
   `msg_title` varchar(200) NOT NULL DEFAULT '',
   `msg_type` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `msg_status` tinyint(1) unsigned NOT NULL DEFAULT '0',

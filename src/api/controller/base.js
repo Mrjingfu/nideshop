@@ -4,6 +4,7 @@ module.exports = class extends think.Controller {
     think.token = this.ctx.header['x-nideshop-token'] || '';
     const tokenSerivce = think.service('token', 'api');
     think.userId = await tokenSerivce.getUserId();
+    think.userInfo = await tokenSerivce.getUserInfo();
 
     const publicController = this.config('publicController');
     const publicAction = this.config('publicAction');
@@ -30,5 +31,13 @@ module.exports = class extends think.Controller {
    */
   getLoginUserId() {
     return think.userId;
+  }
+
+  /**
+   * 获取当前登录用户的信息
+   * @returns {*}
+   */
+  getLoginUserInfo() {
+    return think.userInfo;
   }
 };
