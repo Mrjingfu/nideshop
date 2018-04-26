@@ -61,9 +61,10 @@ module.exports = class extends Base {
 
     let comments = [];
     if (showType !== 1) {
-      comments = await this.model('comment').where({
+      comments = await this.model('comment').order({'add_time': 'desc'}).where({
         type_id: typeId,
-        value_id: valueId
+        value_id: valueId,
+        _complex:{ status:1,user_id: this.getLoginUserId(),_logic:"OR"}
       }).page(page, size).countSelect();
     } else {
       comments = await this.model('comment').alias('comment')

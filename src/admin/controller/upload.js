@@ -2,6 +2,60 @@ const Base = require('./base.js');
 const fs = require('fs');
 
 module.exports = class extends Base {
+  async goodsDetailPicAction(){
+    const adFile = this.file('goods_detail_pic');
+    if (think.isEmpty(adFile)) {
+      return this.fail('保存失败');
+    }
+    const that = this;
+    const filename = '/static/upload/goodsdetail/' + think.uuid(32) + '.jpg';
+    const is = fs.createReadStream(adFile.path);
+    const os = fs.createWriteStream(think.ROOT_PATH + '/www' + filename);
+    is.pipe(os);
+
+    return that.success({
+      name: 'goods_detail_pic',
+      fileUrl: 'http://127.0.0.1:8360' + filename
+    });
+
+  }
+
+  async channelUrlPicAction(){
+    const adFile = this.file('url_pic');
+    if (think.isEmpty(adFile)) {
+      return this.fail('保存失败');
+    }
+    const that = this;
+    const filename = '/static/upload/channel/' + think.uuid(32) + '.jpg';
+    const is = fs.createReadStream(adFile.path);
+    const os = fs.createWriteStream(think.ROOT_PATH + '/www' + filename);
+    is.pipe(os);
+
+    return that.success({
+      name: 'channel_url_pic',
+      fileUrl: 'http://127.0.0.1:8360' + filename
+    });
+
+  }
+
+  async channelIconPicAction(){
+    const adFile = this.file('icon_pic');
+    if (think.isEmpty(adFile)) {
+      return this.fail('保存失败');
+    }
+    const that = this;
+    const filename = '/static/upload/channel/' + think.uuid(32) + '.jpg';
+    const is = fs.createReadStream(adFile.path);
+    const os = fs.createWriteStream(think.ROOT_PATH + '/www' + filename);
+    is.pipe(os);
+
+    return that.success({
+      name: 'channel_icon_pic',
+      fileUrl: 'http://127.0.0.1:8360' + filename
+    });
+
+  }
+
   async adPicAction(){
     const adFile = this.file('ad_pic');
     if (think.isEmpty(adFile)) {
