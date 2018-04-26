@@ -144,4 +144,41 @@ module.exports = class extends Base {
       fileUrl: 'http://127.0.0.1:8360' + filename
     });
   }
+
+  async topicContentAction() {
+    const imageFile = this.file('topic_content_pic');
+    if (think.isEmpty(imageFile)) {
+      return this.fail('保存失败');
+    }
+    const that = this;
+    const filename = '/static/upload/topic/' + think.uuid(32) + '.jpg';
+
+    const is = fs.createReadStream(imageFile.path);
+    const os = fs.createWriteStream(think.ROOT_PATH + '/www' + filename);
+    is.pipe(os);
+
+    return that.success({
+      name: 'topic_content_pic_url',
+      fileUrl: 'http://127.0.0.1:8360' + filename
+    });
+  }
+
+  async goodsGalleryPicAction() {
+    const imageFile = this.file('goodsgallery_pic');
+    if (think.isEmpty(imageFile)) {
+      return this.fail('保存失败');
+    }
+    const that = this;
+    const filename = '/static/upload/goodsgallery/' + think.uuid(32) + '.jpg';
+
+    const is = fs.createReadStream(imageFile.path);
+    const os = fs.createWriteStream(think.ROOT_PATH + '/www' + filename);
+    is.pipe(os);
+
+    return that.success({
+      name: 'goods_gallery_pic',
+      fileUrl: 'http://127.0.0.1:8360' + filename
+    });
+  }
+  
 };
