@@ -6,13 +6,13 @@
 + 服务端api基于Ｎode.js+ThinkJS+MySQL
 + 计划添加基于Vue.js的后台管理系统、PC版、Ｗap版
 
-本项目需要配合微信小程序端使用，GitHub: [https://github.com/tumobi/nideshop-mini-program](https://github.com/tumobi/nideshop-mini-program)
+本项目需要配合微信小程序端使用，GitHub: [https://github.com/Mrjingfu/nideshop-mini-program](https://github.com/Mrjingfu/nideshop-mini-program)
 
 
 ### 本地开发环境配置
 + 克隆项目到本地
 ```
-git clone https://github.com/tumobi/nideshop
+git clone https://github.com/Mrjingfu/nideshop
 ```
 + 创建数据库nideshop并导入项目根目录下的nideshop.sql
 ```
@@ -98,7 +98,7 @@ npm start
 + 会员中心（订单、收藏、足迹、收货地址、意见反馈）
 ....
 
-### 最后
+### 最后,本程序在nideshop基础上完善的,原作者tumobi
 + 喜欢别忘了 Star
-+ 微信号 tumobi
-+ 交流 QQ 群：497145766
++ 微信号 handgame51
++ 交流 QQ 群：418177552
