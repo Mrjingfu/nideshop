@@ -27,6 +27,20 @@ module.exports = class extends Base {
     return this.success(goods);
   }
 
+  //获取所有分类信息
+  async getAllCategoryAction(){
+    const model = this.model('category');
+    const allCategorys = await model.field(['id','name']).where({parent_id: ['!=',0]}).select();
+    const data = [];
+    for (const categoryItem of allCategorys) {
+      const item = {};
+      item.id = categoryItem.id;
+      item.name = categoryItem.name;
+      data.push(item);
+    }
+    return this.success(data)
+  }
+
   async infoAction() {
     const id = this.get('id');
     const model = this.model('goods');
@@ -58,10 +72,31 @@ module.exports = class extends Base {
     values.is_on_sale = values.is_on_sale ? 1 : 0;
     values.is_new = values.is_new ? 1 : 0;
     values.is_hot = values.is_hot ? 1 : 0;
+    
     if (id > 0) {
+      
       await model.where({id: id}).update(values);
+
+      // 对应的修改product表
+      const model_product = this.model('product');
+      const product_row = [];
+      product_row.goods_number = values.goods_number;
+      product_row.retail_price = values.retail_price;
+      await model_product.where({goods_id:values.goods_sn}).update(product_row)
+
     } else {
       delete values.id;
+
+      // 对应的添加到product表中
+      const model_product = this.model('product');
+      const product_row = [];
+      product_row.goods_id = values.goods_sn;
+      product_row.goods_sn = values.goods_sn;
+      product_row.goods_number = values.goods_number;
+      product_row.retail_price = values.retail_price;
+      await model_product.add(product_row)
+      
+      values.id = values.goods_sn;
       await model.add(values);
     }
     return this.success(values);

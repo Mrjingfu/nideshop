@@ -62,7 +62,11 @@ module.exports = class extends Base {
 
   async destoryAction() {
     const id = this.post('id');
-    await this.model('category').where({id: id}).limit(1).delete();
+
+    //删除当前分类，并且删除子分类
+    await this.model('category').where({
+      _complex:{ id:id,parent_id: id,_logic:"OR"}
+    }).limit(1).delete();
     // TODO 删除图片
 
     return this.success();
